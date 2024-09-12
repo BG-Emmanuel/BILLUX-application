@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>OIP.jpeg</file>
+        <file>png1.PNG</file>
+    </qresource>
+</RCC>
