@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QRegExp>
 
 Newowner::Newowner(QWidget *parent)
     : QDialog(parent)
@@ -39,6 +40,26 @@ void Newowner::on_pushButton_clicked()
     phone = ui->lineEdit_5->text();
     password = ui->lineEdit_6->text();
     confirmPassword = ui->lineEdit_7->text();
+
+    // Vérification des mots de passe
+    if (password != confirmPassword) {
+        QMessageBox::warning(this, tr("Erreur"), tr("Les mots de passe ne correspondent pas."));
+        return;
+    }
+
+    // Vérification du numéro de téléphone (entiers uniquement)
+    QRegExp phoneRegex("\\d+");
+    if (!phoneRegex.exactMatch(phone)) {
+        QMessageBox::warning(this, tr("Erreur"), tr("Le numéro de téléphone doit contenir uniquement des chiffres."));
+        return;
+    }
+
+    // Vérification de l'adresse email
+    QRegExp emailRegex("[\\w\\.]+@[\\w\\.]+\\.[a-z]{2,3}");
+    if (!emailRegex.exactMatch(emailAddress)) {
+        QMessageBox::warning(this, tr("Erreur"), tr("L'adresse email n'est pas valide."));
+        return;
+    }
 
     if (!appdb.isOpen()) {
         qDebug() << "Database connection failed!";
