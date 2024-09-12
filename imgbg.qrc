@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>bg.PNG</file>
+        <file>ownerpic.png</file>
+    </qresource>
+</RCC>
