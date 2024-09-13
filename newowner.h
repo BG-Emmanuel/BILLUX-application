@@ -6,7 +6,7 @@
 #include <QFileInfo>
 #include <QDialog>
 #include <QSqlDatabase>
-#include <QRegExp>
+#include <QRegularExpression>
 
 namespace Ui {
 class Newowner;
