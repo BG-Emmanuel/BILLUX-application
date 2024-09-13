@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <QSqlError>
-#include <QRegExp>
+#include <QRegularExpression>
 
 Newowner::Newowner(QWidget *parent)
     : QDialog(parent)
@@ -27,7 +27,7 @@ Newowner::~Newowner()
 }
 
 void Newowner::loadData(){
-    ui->lineEdit->setText("Mice");
+    ui->lineEdit->setText("e.g: Mice");
 }
 
 void Newowner::on_pushButton_clicked()
@@ -41,23 +41,23 @@ void Newowner::on_pushButton_clicked()
     password = ui->lineEdit_6->text();
     confirmPassword = ui->lineEdit_7->text();
 
-    // Vérification des mots de passe
+    // Password verification
     if (password != confirmPassword) {
-        QMessageBox::warning(this, tr("Erreur"), tr("Les mots de passe ne correspondent pas."));
+        QMessageBox::warning(this, tr("Error"), tr("Passwords don't match."));
         return;
     }
 
-    // Vérification du numéro de téléphone (entiers uniquement)
-    QRegExp phoneRegex("\\d+");
-    if (!phoneRegex.exactMatch(phone)) {
-        QMessageBox::warning(this, tr("Erreur"), tr("Le numéro de téléphone doit contenir uniquement des chiffres."));
+    // Phone number verification (only integer)
+    QRegularExpression phoneRegex("\\d+");
+    if (!phoneRegex.match(phone).hasMatch()) {
+        QMessageBox::warning(this, tr("Error"), tr("The phone number must contain only digits."));
         return;
     }
 
-    // Vérification de l'adresse email
-    QRegExp emailRegex("[\\w\\.]+@[\\w\\.]+\\.[a-z]{2,3}");
-    if (!emailRegex.exactMatch(emailAddress)) {
-        QMessageBox::warning(this, tr("Erreur"), tr("L'adresse email n'est pas valide."));
+    //  email verification
+    QRegularExpression emailRegex("[\\w\\.]+@[\\w\\.]+\\.[a-z]{2,3}");
+    if (!emailRegex.match(emailAddress).hasMatch()) {
+        QMessageBox::warning(this, tr("Error"), tr("The email address is invalid."));
         return;
     }
 
