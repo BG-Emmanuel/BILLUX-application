@@ -108,3 +108,71 @@ void Modif::on_listView_2_activated(const QModelIndex &index)
     }
 }
 
+
+void Modif::on_listView_3_activated(const QModelIndex &index)
+{
+    if(!appdb.open()){
+        qDebug()<<"Connection Failed";
+
+        return;
+    }
+    QString val = ui->listView_3->model()->data(index).toString();
+    QSqlQuery qry1;
+    qry1.prepare("select * from itemdt where unitPrice='"+val+"'");
+    if(qry1.exec()){
+        while (qry1.next()) {
+            ui->lineEdit->setText(qry1.value(0).toString());
+            ui->lineEdit_2->setText(qry1.value(1).toString());
+            ui->lineEdit_3->setText(qry1.value(2).toString());
+            ui->lineEdit_4->setText(qry1.value(3).toString());
+        }
+
+    }else{
+        QMessageBox::critical(this,tr("error::"),qry1.lastError().text());
+    }
+}
+
+
+void Modif::on_listView_4_activated(const QModelIndex &index)
+{
+    if(!appdb.open()){
+        qDebug()<<"Connection Failed";
+
+        return;
+    }
+    QString val = ui->listView_4->model()->data(index).toString();
+    QSqlQuery qry1;
+    qry1.prepare("select * from itemdt where quantity='"+val+"'");
+    if(qry1.exec()){
+        while (qry1.next()) {
+            ui->lineEdit->setText(qry1.value(0).toString());
+            ui->lineEdit_2->setText(qry1.value(1).toString());
+            ui->lineEdit_3->setText(qry1.value(2).toString());
+            ui->lineEdit_4->setText(qry1.value(3).toString());
+        }
+
+    }else{
+        QMessageBox::critical(this,tr("error::"),qry1.lastError().text());
+    }
+}
+
+void Modif::on_pushButton_2_clicked()
+{
+
+}
+
+
+void Modif::on_listView_indexesMoved(const QModelIndexList &indexes)
+{
+
+}
+
+
+void Modif::on_pushButton_3_clicked()
+{
+    this->hide();
+    Additem ai;
+    ai.setModal(true);
+    ai.exec();
+}
+

@@ -27,6 +27,14 @@ private slots:
 
     void on_listView_2_activated(const QModelIndex &index);
 
+    void on_listView_3_activated(const QModelIndex &index);
+
+    void on_listView_4_activated(const QModelIndex &index);
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::Modif *ui;
     QSqlDatabase appdb;
@@ -34,4 +42,3 @@ private:
 };
 
 #endif // MODIF_H
-
