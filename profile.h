@@ -1,16 +1,11 @@
 #ifndef PROFILE_H
 #define PROFILE_H
 
-#include <QDialog>
+#include<QtSql>
 #include<QtDebug>
 #include<QFileInfo>
 #include <QDialog>
 
-
-#include<login.h>
-#include"login.h"
-
-class login;
 
 namespace Ui {
 class Profile;
@@ -24,16 +19,18 @@ public:
     explicit Profile(QWidget *parent = nullptr);
     ~Profile();
     void loadData();
-    //void setlogin(login *login);
+    void setText(const QString &text);
+
 
 private slots:
-    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::Profile *ui;
-    QSqlDatabase appdb;
     QString receivedText;
-    //login *login;
+    QSqlDatabase appdb;
+    QString dataText;
 };
 
 #endif // PROFILE_H
