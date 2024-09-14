@@ -1,6 +1,7 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
+#include <QMainWindow>
 #include<QtSql>
 #include<QtDebug>
 #include<QFileInfo>
@@ -9,9 +10,11 @@
 #include<addcustomer.h>
 #include<facturation.h>
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class Customer;
 }
+QT_END_NAMESPACE
 
 class Customer : public QDialog
 {
@@ -31,5 +34,4 @@ private:
     QSqlDatabase appdb;
     void loadData();
 };
-
 #endif // CUSTOMER_H
