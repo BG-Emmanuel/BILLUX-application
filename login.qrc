@@ -3,4 +3,7 @@
         <file>OIP.jpeg</file>
         <file>png1.PNG</file>
     </qresource>
+    <qresource prefix="/">
+        <file>log.qrc</file>
+    </qresource>
 </RCC>
