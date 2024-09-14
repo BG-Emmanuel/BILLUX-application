@@ -1,6 +1,7 @@
-#ifndef ADDCUSTOMER_H
-#define ADDCUSTOMER_H
+#ifndef ADDCUSTOMERS_H
+#define ADDCUSTOMERS_H
 
+#include <QMainWindow>
 #include<QtSql>
 #include<QtDebug>
 #include<QFileInfo>
@@ -8,17 +9,20 @@
 
 #include<customer.h>
 
-namespace Ui {
-class Addcustomer;
-}
 
-class Addcustomer : public QDialog
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class Addcustomers;
+}
+QT_END_NAMESPACE
+
+class Addcustomers : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit Addcustomer(QWidget *parent = nullptr);
-    ~Addcustomer();
+    explicit Addcustomers(QWidget *parent = nullptr);
+    ~Addcustomers();
 
 private slots:
     void on_pushButton_2_clicked();
@@ -26,9 +30,9 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    Ui::Addcustomer *ui;
+    Ui::Addcustomers *ui;
     void loadData();
     QSqlDatabase appdb;
-};
 
-#endif // ADDCUSTOMER_H
+};
+#endif // ADDCUSTOMERS_H
