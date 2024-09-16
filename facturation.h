@@ -4,30 +4,31 @@
 #include<QtSql>
 #include<QtDebug>
 #include<QFileInfo>
-#include <QMainWindow>
+#include <QDialog>
+#include <QPushButton>
+#include<item.h>
 
-QT_BEGIN_NAMESPACE
 namespace Ui {
 class Facturation;
 }
-QT_END_NAMESPACE
 
-class Facturation : public QMainWindow
+class Facturation : public QDialog
 {
     Q_OBJECT
 
 public:
-    Facturation(QWidget *parent = nullptr);
+    explicit Facturation(QWidget *parent = nullptr);
     ~Facturation();
-    void loadData();
+    void setLineEditText(const QString &text);
+
 
 private slots:
     void on_pushButton_clicked();
 
-    void on_pushButton_2_clicked();
 
 private:
     Ui::Facturation *ui;
-    QSqlDatabase appdb;
+    QSqlDatabase factdb;
 };
+
 #endif // FACTURATION_H
