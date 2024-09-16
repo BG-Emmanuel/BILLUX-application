@@ -1,23 +1,49 @@
 #ifndef PREVIEW_H
 #define PREVIEW_H
 
-#include <QMainWindow>
+#include<QtSql>
+#include<QtDebug>
+#include<QFileInfo>
+#include <QDialog>
 
-QT_BEGIN_NAMESPACE
+#include<facturation.h>
+#include<customer.h>
+#include<preview.h>
+#include<additem.h>
+#include<addcustomer.h>
+#include<modif.h>
+#include<newowner.h>
+#include<profile.h>
+
 namespace Ui {
 class Preview;
 }
-QT_END_NAMESPACE
 
-class Preview : public QMainWindow
+class Preview : public QDialog
 {
     Q_OBJECT
 
 public:
-    Preview(QWidget *parent = nullptr);
+    explicit Preview(QWidget *parent = nullptr);
     ~Preview();
+    void loadListFromDatabase();
+    void loadData();
+    void loadStyle();
+    void setText2(const QString &text);
+    void setText3(const QString &text);
+    void setText4(const QString &text);
+    void setText(const QString &text);
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::Preview *ui;
+    QSqlDatabase appdb;
+    QString dataText2;
+    QString dataText;
+    QString dataText3;
+    QString dataText4;
 };
+
 #endif // PREVIEW_H
