@@ -1,12 +1,12 @@
 #ifndef NEWOWNER_H
 #define NEWOWNER_H
 
-#include <QtSql>
-#include <QtDebug>
-#include <QFileInfo>
+#include<QtSql>
+#include<QtDebug>
+#include<QFileInfo>
 #include <QDialog>
-#include <QSqlDatabase>
-#include <QRegularExpression>
+
+#include<login.h>
 
 namespace Ui {
 class Newowner;
@@ -19,9 +19,11 @@ class Newowner : public QDialog
 public:
     explicit Newowner(QWidget *parent = nullptr);
     ~Newowner();
+    void loadStyle();
 
 private slots:
     void on_pushButton_clicked();
+
     void on_pushButton_2_clicked();
 
 private:
